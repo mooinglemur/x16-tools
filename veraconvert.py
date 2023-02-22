@@ -78,11 +78,11 @@ while (byte := args.i.read(1)):
         t_byte = 0
 
     # Seek to where to grab the next input byte
-    col_offset = math.floor((t_idx % args.m) * (args.x / (8/args.b)) + ((t_byte / (8/args.b)) % args.x))
+    col_offset = math.floor((t_idx % args.m) * (args.x / (8/args.b)) + (t_byte % (args.x / (8/args.b))))
     row_offset = math.floor((math.floor(t_idx / args.m) * args.y) + math.floor((t_byte / math.floor(8/args.b)) / args.x))
     bytes_per_row = math.floor((args.m * args.x) / math.floor(8/args.b))
 
-    #print("x: {} y: {} tile: {} byte: {} bpr: {} offset: {}".format(col_offset, row_offset, t_idx, t_byte, bytes_per_row, row_offset * bytes_per_row + col_offset))
+    # print("x: {} y: {} tile: {} byte: {} bpr: {} offset: {}".format(col_offset, row_offset, t_idx, t_byte, bytes_per_row, row_offset * bytes_per_row + col_offset))
 
     args.i.seek(row_offset * bytes_per_row + col_offset)
 
