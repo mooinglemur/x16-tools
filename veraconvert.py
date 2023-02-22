@@ -57,7 +57,7 @@ while (byte := args.i.read(1)):
     # Extract the individual pixels out of the source byte
     # And put them into the output pixels
     for i in range(math.floor(8/args.b)):
-        byte = rol(bint, args.b, 8)
+        bint = rol(bint, args.b, 8)
         o_tile.append(bint & (2**args.b-1))
 
     t_byte += 1
