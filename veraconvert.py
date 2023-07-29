@@ -31,8 +31,8 @@ def rol(n,rotations,width):
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-m", metavar="<map width>", type=int, help='Input map width in tiles, default is 1 tile', default=1, choices=range(1,65))
-parser.add_argument("-x", metavar="<tile width>", type=int, help='Tile width, default is 8', default=8, choices=[8,16])
-parser.add_argument("-y", metavar="<tile height>", type=int, help='Tile height, default is 8', default=8, choices=[8,16])
+parser.add_argument("-x", metavar="<tile width>", type=int, help='Tile width, default is 8', default=8, choices=[8,16,32,64])
+parser.add_argument("-y", metavar="<tile height>", type=int, help='Tile height, default is 8', default=8, choices=[8,16,32,64])
 parser.add_argument("-b", metavar="<bpp>", type=int, help='Input file BPP, default is 8', default=8, choices=[1,2,4,8])
 parser.add_argument("-d", metavar="<bpp>", type=int, help='Output file BPP, default is 4', default=4, choices=[1,2,4,8])
 parser.add_argument("-i", metavar="input.bin", type=argparse.FileType('rb'), help='Indexed tilemap input file', required=True)
