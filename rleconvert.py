@@ -125,12 +125,16 @@ def process_pal():
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-i", metavar="input.bin", type=argparse.FileType('rb'), help='8bpp raw input image', required=True)
-parser.add_argument("-p", metavar="palette.pal", type=argparse.FileType('r'), help='Paint Shop Pro palette file', required=False)
+parser.add_argument("-p", metavar="palette.pal", type=argparse.FileType('r'), help='JASC (Paint Shop Pro) palette input file', required=False)
 parser.add_argument("-o", metavar="output.bin", type=argparse.FileType('wb'), help='RLE-encoded 4bpp output image', required=True)
+parser.add_argument("-r", action='store_true', help='Add RLX header 0x52 0x4C 0x58 0x00 to the beginning of the output file', required=False)
 
 args = parser.parse_args()
 
 print("Working...")
+if (args.r):
+    args.o.write(b'\x52\x4C\x58\x00')
+    d_cnt += 4
 if (args.p):
     process_pal()
 outer_loop()
